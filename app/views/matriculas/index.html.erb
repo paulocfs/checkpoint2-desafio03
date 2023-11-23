@@ -1,0 +1,24 @@
+
+
+<div class="row shadow-sm row">
+  
+  <div class="col-sm p-0">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Matrículas:</small>
+      <span class="text-warning"><strong><%= @total_de_matriculas%></strong> </span>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+    <div class="w-50">
+    <ul class="list-group list-group-sm ">
+        <% @matriculas.each do |key, matricula|%>
+      
+        <li class="list-group-item list-group-item-light">
+            Matrícula: 
+            <a href="alunos/<%=key%>" class="btn btn-primary ms-5"><%=key%></a></li>
+        <% end %>
+    </ul>
+    </div>
+</div>

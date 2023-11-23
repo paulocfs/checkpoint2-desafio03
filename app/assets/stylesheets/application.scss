@@ -1,0 +1,43 @@
+
+
+ @import "bootstrap";
+
+
+ .material-symbols-outlined {
+   font-variation-settings:
+   'FILL' 0,
+   'wght' 400,
+   'GRAD' 0,
+   'opsz' 24
+ }
+
+
+ body{
+    padding: 5px 10px 5px 10px;
+    overflow: hidden;
+   
+ }
+
+ .container-app{
+    background-color: #5214CC;
+ }
+ .box-overflow{
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+ }
+
+ .nav-link:hover{
+    color: #7431F9;
+ }
+
+ .nav-link.active{
+    background-color: #7431F9;
+    color: #fff;
+ }
+
+
+ .header{
+    background-color: #7431F9;
+    color: #fff;
+ }

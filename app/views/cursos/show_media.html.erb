@@ -1,0 +1,96 @@
+
+<div class="row shadow-sm ">
+  
+  <div class="col-3 p-0 mt-1 mb-1">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Disciplinas:</small>
+      <span class="text-warning"><strong><%= @total_de_disciplinas_do_aluno_pelo_codigo_do_curso%></strong> </span>
+    </div>
+  </div>
+
+  <div class="col-3 p-0 mt-1 mb-1">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Notas:</small>
+      <span class="text-warning"><strong><%= @total_de_notas_do_aluno_pelo_codigo_do_curso%></strong> </span>
+    </div>
+  </div>
+
+  <div class="col-3 p-0 mt-1 mb-1">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Carga Horária:</small>
+      <span class="text-warning"><strong><%= @total_de_cargas_horarias_do_aluno_pelo_codigo_do_curso%></strong> </span>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="col-3 p-0 mt-1 mb-1">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Soma das cargas horárias: </small>
+      <span class="text-warning"><strong><%=@soma_das_cargas_horarias_do_aluno_pelo_curso %></strong> </span>
+    </div>
+  </div>
+
+  <div class="col-3 p-0 mt-1 mb-1">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Soma das notas: </small>
+      <span class="text-warning"><strong><%= @soma_das_notas_do_aluno_pelo_curso%></strong> </span>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="row p-2 m-3">
+  <small class="text-danger text-center">** A coluna média ponderada leva em conta a seguinte fórmula: CR = Nota(i)*CargaHoraria(i)/TotalCargaHoraria </small>
+<div>
+
+
+<div class="row mt-3 shadow-sm">
+  <h6 class="text-center p-3 border-bottom"> 
+    Dados do Matrícula 
+    <strong class="text-primary"><%= @matricula%> </strong> 
+    para o curso 
+    <strong class="text-primary"> <%= @codigo_do_curso%> </strong> 
+  </h6>
+
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th scope="col">COD_CURSO</th>
+      <th scope="col">MATRICULA</th>
+      <th scope="col">COD_DISCIPLINA</th>
+      <th scope="col">NOTA</th>
+      <th scope="col">CARGA_HORARIA</th>
+      <th scope="col">PCH(CH*N)</th>
+      <th scope="col">ANO_SEMESTRE</th>
+      <th scope="col">MEDIA PONDERADA</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% if @aluno_pelo_codigo_do_curso.present? %>
+        <% @aluno_pelo_codigo_do_curso.each do |curso| %>
+        <tr>
+            <td class="text-light-emphasis"><%= curso['COD_CURSO'] %></td>
+            <td class="text-light-emphasis"><%= curso['MATRICULA'] %></td>
+            <td class="text-light-emphasis"><%= curso['COD_DISCIPLINA'] %></td>
+            <td class="text-light-emphasis"><%= curso['NOTA'] %></td>
+            <td class="text-light-emphasis"><%= curso['CARGA_HORARIA'] %></td>
+            <td class="text-light-emphasis"><%= curso['NOTA'].to_i * curso['CARGA_HORARIA'].to_i %></td>
+            <td class="text-light-emphasis"><%= curso['ANO_SEMESTRE'] %></td>
+            <td class="text-success">
+              <%= curso['NOTA'].to_i * curso['CARGA_HORARIA'].to_i / @soma_das_cargas_horarias_do_aluno_pelo_curso %>
+            </td>
+            
+        </tr>
+        <% end %>
+    <% end %>
+
+  </tbody>
+</table>
+</div>

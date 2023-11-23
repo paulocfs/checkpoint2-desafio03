@@ -1,0 +1,52 @@
+
+
+
+<%= form_with  url: alunos_pesquisar_path do |form| %>
+
+<%= form.label :matricula , "informe uma matrícula" %>
+<%= form.text_field :matricula %>
+<%= form.submit "pesquisar" %>
+<%end%>
+
+
+
+<% if @input_matricula.present? %>
+    o que eu digitei : <%=  @input_matricula%><br>
+    total da carga horaria :<%=  @total_carga_horaria %><br>
+   <%=  @ab %><br>
+<%end%>
+
+<h1>Dados da Matrícula 101</h1>
+
+<table >
+  <thead>
+    <tr>
+      <th>MATRICULA</th>
+     <!-- <th>COD_DISCIPLINA</th>
+      <th>COD_CURSO</th>
+      <th>NOTA</th>
+      <th>CARGA_HORARIA</th>
+      <th>ANO_SEMESTRE</th>-->
+      <th>(nota x ch) / total da carga horaria</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% if @dados_matricula_101.present? %>
+        <% @dados_matricula_101.each do |dados| %>
+        <tr>
+            <td><%= dados['MATRICULA'] %></td>
+            <!--<td><%= dados['COD_DISCIPLINA'] %></td>
+            <td><%= dados['COD_CURSO'] %></td>
+            <td><%= dados['NOTA'] %></td>
+            <td><%= dados['CARGA_HORARIA'] %></td>
+            <td><%= dados['ANO_SEMESTRE'] %></td>-->
+            <td><%= dados['NOTA'].to_i *  dados['CARGA_HORARIA'].to_i / @total_carga_horaria%></td>
+            
+        </tr>
+        <% end %>
+    <% end %>
+
+  </tbody>
+</table>
