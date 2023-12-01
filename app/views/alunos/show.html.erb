@@ -2,77 +2,65 @@
 
 
 
-<div class="row shadow-sm ">
-  
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
-      <small>Total de Disciplinas:</small>
-      <span class="text-warning"><strong><%= @total_disciplina_por_aluno%></strong> </span>
+ <div class="row">
+    
+   
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Total de Matrículas:</small>
+      <span class="text-warning"><strong><%= @total_disciplinas_por_aluno%></strong> </span>
     </div>
-  </div>
 
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Cursos:</small>
-      <span class="text-warning"><strong><%= @total_curso_por_aluno%></strong> </span>
+      <span class="text-warning"><strong><%= @total_cursos_por_aluno%></strong> </span>
     </div>
-  </div>
 
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
+     <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Notas:</small>
       <span class="text-warning"><strong><%= @total_notas_por_aluno%></strong> </span>
     </div>
-  </div>
-
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
+    
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Semestres:</small>
       <span class="text-warning"><strong><%= @total_semestres_por_aluno%></strong> </span>
     </div>
+
+  
+
   </div>
 
 
+  <div class="row mt-3">
 
-   <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Soma das Notas:</small>
-      <span class="text-warning"><strong><%= @soma_das_notas_da_matricula%></strong> </span>
+      <span class="text-primary"><strong><%= @soma_das_notas_da_matricula%></strong> </span>
     </div>
-  </div>
 
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
-      <small>Soma das cargas horárias:</small>
-      <span class="text-warning"><strong><%= @soma_das_cargas_horarias_da_matricula%></strong> </span>
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma das Cargas Horárias:</small>
+      <span class="text-primary"><strong><%= @soma_das_cargas_horarias_da_matricula%></strong> </span>
     </div>
-  </div>
 
-    <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-warning p-3 rounded">
-      <small>Soma dos PCHS's:</small>
-      <span class="text-warning"><strong><%= @soma_dos_pchs_da_matricula%></strong> </span>
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma dos PCH's:</small>
+      <span class="text-primary"><strong><%=@soma_dos_pchs_da_matricula %></strong> </span>
     </div>
-  </div>
 
-  <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-info p-3 rounded">
-      <small class="">Média Aritmética das Notas</small>
-      <span class="text-info"><strong><%= @media_aritmetica_notas_da_matricula%></strong> </span>
+     <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Média Aritmética das notas:</small>
+      <span class="text-primary"><strong><%= @media_aritmetica_notas_da_matricula%></strong> </span>
     </div>
-  </div>
 
- 
-
-   <div class="col-3 p-0 mt-1 mb-1">
-    <div class="border-start border-4 border-info p-3 rounded">
-      <small>CR final (PCH/CH):</small>
-      <span class="text-info"><strong><%= @crfinal_da_matricula%></strong> </span>
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>CR do aluno: </small>
+      <span class="text-primary"><strong><%= @soma_dos_pchs_da_matricula / @soma_das_cargas_horarias_da_matricula%></strong> </span>
     </div>
+
+
   </div>
 
 
-</div>
 
 
 
@@ -107,8 +95,7 @@
             <td class="text-light-emphasis"><%= aluno['CARGA_HORARIA'] %></td>
             <td class="text-light-emphasis"><%= aluno['NOTA'].to_i * aluno['CARGA_HORARIA'].to_i %></td>
             <td class="text-light-emphasis"><%= aluno['ANO_SEMESTRE'] %></td>
-            <td class="text-success"><%= aluno['NOTA'].to_i * aluno['CARGA_HORARIA'].to_i / @soma_carga_horaria %></td>
-            
+            <td class="text-success"><%= aluno['NOTA'].to_i * aluno['CARGA_HORARIA'].to_i  / @soma_das_cargas_horarias_da_matricula %></td>
         </tr>
         <% end %>
     <% end %>

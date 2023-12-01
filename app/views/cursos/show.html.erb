@@ -1,70 +1,81 @@
 
-
-
-
-
-
-
-<div class="row shadow-sm ">
+<div class="row ">
   
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+  <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Total de Matrículas:</small>
+      <span class="text-warning"><strong><%= @total_de_matriculas_pelo_codigo_do_curso%></strong> </span>
+  </div>
+
+  <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Disciplinas:</small>
-      <span class="text-warning"><strong><%= @total_disciplina_por_aluno%></strong> </span>
-    </div>
+      <span class="text-warning"><strong><%= @total_de_disciplinas_pelo_codigo_do_curso%></strong> </span>
   </div>
 
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
-      <small>Total de Cursos:</small>
-      <span class="text-warning"><strong><%= @total_curso_por_aluno%></strong> </span>
-    </div>
-  </div>
-
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+  <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Notas:</small>
-      <span class="text-warning"><strong><%= @total_notas_por_aluno%></strong> </span>
-    </div>
+      <span class="text-warning"><strong><%= @total_de_notas_pelo_codigo_do_curso%></strong> </span>
   </div>
 
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+   <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Semestres:</small>
-      <span class="text-warning"><strong><%= @total_semestres_por_aluno%></strong> </span>
-    </div>
+      <span class="text-warning"><strong><%= @total_de_semestres_pelo_codigo_do_curso%></strong> </span>
   </div>
 
-    <div class="col-sm p-0">
-    <div class="border-start border-4 border-info p-3 rounded">
-      <small>Total da Carga Horária:</small>
-      <span class="text-info"><strong><%= @total_carga_horaria_do_curso%></strong> </span>
-    </div>
+</div>
+
+<div class="row mt-3">
+
+  <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma pch</small>
+      <span class="text-primary"><strong><%= @soma_dos_pchs_pelo_codigo_do_curso%></strong> </span>
+  </div>
+
+  <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma das Cargas Horárias</small>
+      <span class="text-primary"><strong><%= @soma_das_cargas_horarias_pelo_codigo_do_curso%></strong> </span>
+  </div>
+
+   <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>CR do Curso:</small>
+      <span class="text-primary"><strong><%= @soma_dos_pchs_pelo_codigo_do_curso / @soma_das_cargas_horarias_pelo_codigo_do_curso %></strong> </span>
   </div>
 
 
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
 <div class="row p-2 m-3">
-  <small class="text-danger text-center">** A coluna média ponderada leva em conta a seguinte fórmula: CR = Nota(i)*CargaHoraria(i)/TotalCargaHoraria </small>
+  <small class="text-danger text-center">** A coluna média leva em conta a seguinte fórmula: CR = Nota(i)*CargaHoraria(i)/TotalCargaHoraria </small>
 <div>
 
 
-<div class="row mt-3 shadow-sm">
-<h6 class="text-center p-3 border-bottom"> Dados do Curso <strong class="text-primary"><%= %></strong></h6>
+<div class="row mt-3 ">
+  <h6 class="text-center p-3 border-bottom"> Dados do Curso 
+    <strong class="text-primary"><%= @curso[0]['COD_CURSO']%>  </strong>
+  </h6>
 
 
-<table class="table table-striped table-sm">
+  <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th scope="col">COD_CURSO</th>
       <th scope="col">MATRICULA</th>
       <th scope="col">COD_DISCIPLINA</th>
       <th scope="col">NOTA</th>
       <th scope="col">CARGA_HORARIA</th>
+      <th scope="col">PCH(CH*N)</th>
       <th scope="col">ANO_SEMESTRE</th>
-      <th scope="col">MÉDIA_PONDERADA</th>
+      <th scope="col">MÉDIA</th>
+      
       
     </tr>
   </thead>
@@ -73,15 +84,8 @@
     <% if @curso.present? %>
         <% @curso.each do |curso| %>
         <tr>
-            <td class="text-light-emphasis">
-                <a 
-                    href="/cursos/<%= curso['COD_CURSO'] %>" 
-                >
-                    <%= curso['COD_CURSO'] %>      
-                </a>
-            </td>
             <td>
-                <a 
+                <a  class="btn btn-primary"
                     href="/cursos/<%= curso['COD_CURSO'] %>/aluno/<%= curso['MATRICULA'] %> " 
                 >
                 <%= curso['MATRICULA'] %>
@@ -90,8 +94,13 @@
             <td class="text-light-emphasis"><%= curso['COD_DISCIPLINA'] %></td>
             <td class="text-light-emphasis"><%= curso['NOTA'] %></td>
             <td class="text-light-emphasis"><%= curso['CARGA_HORARIA'] %></td>
+            <td class="text-light-emphasis"><%= curso['NOTA'].to_i * curso['CARGA_HORARIA'].to_i %></td>
             <td class="text-light-emphasis"><%= curso['ANO_SEMESTRE'] %></td>
-            <td class="text-light-emphasis"><%= curso['NOTA'].to_i *  curso['CARGA_HORARIA'].to_i /  @total_carga_horaria_do_curso %></td>
+            <td class="text-success">
+              <%= curso['NOTA'].to_i * curso['CARGA_HORARIA'].to_i /  @soma_das_cargas_horarias_pelo_codigo_do_curso %>
+            </td>
+
+         
             
         </tr>
         <% end %>
@@ -103,7 +112,7 @@
 
 <div class="row">
   <div class="col-3">
-  <%= link_to "voltar" , alunos_path , class: "btn btn-secondary"%>
+    <%= link_to "voltar" , cursos_path , class: "btn btn-secondary"%>
   </div>
 </div>
 

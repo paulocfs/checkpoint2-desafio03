@@ -2,67 +2,80 @@
 
 
 
-<div class="row shadow-sm mb-4 mt-4 p-3">
-  
-  <%= form_with class: "row" do |form|  %>
-
-      <div class="col">
-        <%= form.text_field :matricula,  class: "form-control" , placeholder: "Pesquise por um código de matrícula" %>
-      </div>
-
-      <div class="col">
-        <%= form.submit "pesquisar", class:"text-uppercase btn btn-primary" %>
-      </div>
-
-  <% end %>
-
-</div>
 
 
-<div class="row shadow-sm row">
-  
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+
+  <div class="row">
+    
+   
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Matrículas:</small>
-      <span class="text-warning"><strong><%= @total_matriculas%></strong> </span>
+      <span class="text-warning"><strong><%= @total_de_matriculas%></strong> </span>
     </div>
-  </div>
+   
 
-   <div class="col-sm p-0">
-     <div class="border-start border-4 border-warning p-3 rounded">
+   
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Disciplinas:</small>
-      <span class="text-warning "><strong><%= @total_disciplinas%> </strong></span>
+      <span class="text-warning "><strong><%= @total_de_disciplinas%> </strong></span>
     </div>
-  </div>
+   
 
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+    
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Cursos:</small>
-      <span class="text-warning "><strong><%= @total_cursos%> </strong></span>
+      <span class="text-warning "><strong><%= @total_de_cursos%> </strong></span>
     </div>
-  </div>
+    
 
-  <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
+   
+     <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
       <small>Total de Notas:</small>
-       <span class="text-warning "><strong><%= @total_notas%> </strong></span>
+      <span class="text-warning "><strong><%= @total_de_notas%> </strong></span>
     </div>
+  
+
+  
+    <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Total de Horas:</small>
+      <span class="text-warning "><strong><%= @total_de_cargas_horarias%> </strong></span>
+    </div>
+   
+
+  
+      <div class="col border-start border-4 border-warning p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+        <small>Total de Semestres:</small>
+        <span class="text-warning "><strong><%= @total_de_anos_semestres%> </strong></span>
+      </div>
+   
+
   </div>
 
-   <div class="col-sm p-0">
-    <div class="border-start border-4 border-warning p-3 rounded">
-      <small>Total de Semestres:</small>
-       <span class="text-warning "><strong><%= @total_semestres%> </strong></span>
+  <div class="row mt-3">
+
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma das Horas:</small>
+      <span class="text-primary "><strong><%= @soma_das_cargas_horarias%> </strong></span>
     </div>
+
+    <div class="col border-start border-4 border-primary p-3 rounded d-flex flex-column justify-content-center align-items-center shadow-sm">
+      <small>Soma das Notas:</small>
+      <span class="text-primary "><strong><%= @soma_das_notas%> </strong></span>
+    </div>
+
   </div>
 
 
 
-</div>
 
 
 
-<div class="row mt-3 shadow-sm">
+ 
+
+
+
+
+<section class="row mt-3 shadow-sm">
   <h6 class="text-center p-3 border-bottom"> Lista de alunos por código de matrícula</h6>
   <table class="table table-striped table-sm w-100">
     <thead>
@@ -108,4 +121,4 @@
 
     </tbody>
   </table>
-</div>
+</section>

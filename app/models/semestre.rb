@@ -4,7 +4,8 @@ class Semestre < ApplicationRecord
 
     @path_to_csv = Rails.root.join('app', 'models', 'alunos.csv')
 
-    def self.get_total_semestres
+    #ok
+    def self.get_total_de_semestres
 
         semestres = []
 
@@ -17,6 +18,7 @@ class Semestre < ApplicationRecord
         return contagem_semestres.size
     end
 
+    #ok
     def self.get_total_semestres_por_matricula(matricula)
 
         total = []
@@ -32,6 +34,21 @@ class Semestre < ApplicationRecord
 
         return total.tally.size
         
+    end
+
+    #ok
+    def self.get_total_de_todos_semestres_pelo_codigo_do_curso(codigo_do_curso)
+
+        total= []
+
+        CSV.foreach(@path_to_csv, headers: true) do |row|
+
+            if(row['COD_CURSO'] == codigo_do_curso)
+                total << row['ANO_SEMESTRE']
+            end
+        end
+
+        return total.tally.size
     end
 
 

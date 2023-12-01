@@ -1,48 +1,65 @@
 class AlunosController < ApplicationController
 
-    def index
-           
-      @alunos = Aluno.get_alunos()    
-      
-      @total_matriculas = Matricula.get_total_matriculas()
-      @total_disciplinas = Disciplina.get_total_discipinas()
-      @total_cursos = Curso.get_total_cursos()
-      @total_notas = Nota.get_total_notas()
-      @total_semestres= Semestre.get_total_semestres()
-    
+  before_action :set_page_active
 
+    def index
+
+      #busca todos os alunos 
+      @alunos = Csv.getAll()    
+    
+      # -- busca pelo total de registros individualizdos na coluna do csv --
+      @total_de_matriculas = Csv.getTotalColuna('MATRICULA')
+      @total_de_disciplinas = Csv.getTotalColuna('COD_DISCIPLINA')
+      @total_de_cursos = Csv.getTotalColuna('COD_CURSO')
+      @total_de_notas = Csv.getTotalColuna('NOTA')
+      @total_de_cargas_horarias = Csv.getTotalColuna('CARGA_HORARIA')
+      @total_de_anos_semestres = Csv.getTotalColuna('ANO_SEMESTRE')
+
+      # -- busca pelo somatorios de registros individualizdos na coluna do csv --
+      @soma_das_notas = Csv.getSomaColuna('NOTA')
+      @soma_das_cargas_horarias = Csv.getSomaColuna('CARGA_HORARIA')
+
+      
     end
 
 
     def show
 
-
-      
+      #matricula do aluno passado pela url
       @matricula  = params[:matricula]
       
-      @total_disciplina_por_aluno = Disciplina.get_total_disciplina_por_matricula(@matricula)
-      @total_curso_por_aluno = Curso.get_total_curso_por_matricula(@matricula)
-      @total_notas_por_aluno = Nota.get_total_notas_por_matricula(@matricula)
-      @total_semestres_por_aluno = Semestre.get_total_semestres_por_matricula(@matricula)
+      #busca todos os dados de um aluno com base na matricula informada
+      @aluno = Csv.getDadosPelaCondicao('MATRICULA', @matricula)
 
-      @soma_das_notas_da_matricula = Nota.get_soma_das_notas_pela_matricula(@matricula)
-      @soma_das_cargas_horarias_da_matricula = Nota.get_soma_das_cargas_horarias_pela_matricula(@matricula)
-      @soma_dos_pchs_da_matricula = Nota.get_soma_dos_pchs_da_matricula(@matricula)
+      #busca o total de disciplinas de 1 aluno a partir da matricula do aluno
+      @total_disciplinas_por_aluno = Csv.getTotalColunaByCondition('COD_DISCIPLINA', @matricula, 'MATRICULA')
 
-      @media_aritmetica_notas_da_matricula = Nota.get_media_aritmetica_notas_da_matricula(@matricula)
+      #busca o total de disciplinas de 1 aluno a partir da matricula do aluno
+      @total_cursos_por_aluno = Csv.getTotalColunaByCondition('COD_CURSO', @matricula, 'MATRICULA')
+
+      #busca o total de notas de 1 aluno a partir da matricula do aluno
+      @total_notas_por_aluno = Csv.getTotalColunaByCondition('NOTA', @matricula, 'MATRICULA')
+
+      #busca o total de semestres de 1 aluno a partir da matricula do aluno      
+      @total_semestres_por_aluno = Csv.getTotalColunaByCondition('ANO_SEMESTRE', @matricula, 'MATRICULA')
+
+
+
+
+
+      #faz a soma de todas as notas de 1 aluno a partir da matricula do aluno 
+      @soma_das_notas_da_matricula = Csv.getSomaColunaPelaCondicao('NOTA', @matricula, 'MATRICULA')
+     
+      #faz a soma de todas as cargas horarias de 1 aluno a partir da matricula do aluno 
+      @soma_das_cargas_horarias_da_matricula = Csv.getSomaColunaPelaCondicao('CARGA_HORARIA', @matricula, 'MATRICULA')
+
+      #faz a soma de todas as pchs de 1 aluno a partir da matricula do aluno 
+      @soma_dos_pchs_da_matricula = Csv.get_soma_dos_pchs_da_matricula(@matricula)
+
+      #faz amedia aritmetica das notas de 1 aluno a partir da matricula do aluno 
+      @media_aritmetica_notas_da_matricula = Csv.get_media_aritmetica_notas_da_matricula(@matricula)
       
-      @crfinal_da_matricula = Nota.get_crfinal_da_matricula(@matricula)
-
-
-      @aluno = Aluno.getnotas_by_matricula(@matricula)
-
-      @soma_carga_horaria = 0
-
-      @aluno.each do |aluno|
-        @soma_carga_horaria+= aluno['CARGA_HORARIA'].to_i
-      end
-
-      
+      #@crfinal_da_matricula = Csv.get_crfinal_da_matricula(@matricula)
      
 
     end
@@ -112,6 +129,11 @@ class AlunosController < ApplicationController
     end
 
 
+
+    def set_page_active
+      @page_active = "alunos"
+      return @page_active
+    end
 
 
 end

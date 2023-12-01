@@ -5,13 +5,15 @@ class Aluno < ApplicationRecord
     @path_to_csv = Rails.root.join('app', 'models', 'alunos.csv')
 
 
-    def self.get_alunos
+    #ok
+    #def self.get_alunos
         
-        @alunos = CSV.read(@path_to_csv, headers: true)
-        return @alunos
+        #@alunos = CSV.read(@path_to_csv, headers: true)
+        #return @alunos
     
-    end
+    #end
 
+    #ok
     def self.get_matriculas
         
         matriculas = []
@@ -24,17 +26,19 @@ class Aluno < ApplicationRecord
     
     end
 
-    def self.get_total_de_matriculas
+    #ok
+    #def self.get_total_de_matriculas
         
-        matriculas = []
+     #   matriculas = []
 
-        CSV.foreach(@path_to_csv, headers: true) do |row|
-            matriculas << row['MATRICULA']
-        end
+      #  CSV.foreach(@path_to_csv, headers: true) do |row|
+       #     matriculas << row['MATRICULA']
+       # end
 
-        return  matriculas.tally.size
+        #return  matriculas.tally.size
+
     
-    end
+    #end
 
    
 
@@ -44,11 +48,28 @@ class Aluno < ApplicationRecord
         
     end
 
+    #ok
     def self.get_aluno_pelo_codigo_do_curso(codigo_do_curso, matricula)
         @alunos_pelo_curso = CSV.read(@path_to_csv, headers: true).select{ |row| 
             row["COD_CURSO"] == codigo_do_curso && row['MATRICULA'] == matricula
         }
 
         return @alunos_pelo_curso
+    end
+
+
+    #ok
+    def self.get_total_de_todas_matriculas_pelo_codigo_do_curso(codigo_do_curso)
+
+        total= []
+
+        CSV.foreach(@path_to_csv, headers: true) do |row|
+
+            if(row['COD_CURSO'] == codigo_do_curso)
+                total << row['MATRICULA']
+            end
+        end
+
+        return total.tally.size
     end
 end

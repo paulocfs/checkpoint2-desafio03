@@ -1,0 +1,27 @@
+
+<div class="row shadow-sm row">
+  
+  <div class="col-sm p-0">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Disciplinas:</small>
+      <span class="text-warning"><strong><%= @total_de_disciplinas%></strong> </span>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4 mb-4 g-0">
+    <div class="">
+      <ul class="d-flex flex-md-row flex-wrap  ms-0">
+        
+        
+      <% @disciplinas.each do |key, valor|%>
+          <li class="list-group-item list-group-item-light border  text-center col-3 p-2 ">
+             
+              <span class=" text-primary "><%=key%></span>
+          </li>
+      <% end %>
+        
+      </ul>
+    </div>
+</div>
+

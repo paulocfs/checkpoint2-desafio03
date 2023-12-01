@@ -1,0 +1,63 @@
+
+<style>
+    .span-destak {
+        font-size: 30px;
+        font-weight: 700
+    }
+
+</style>
+
+<div class="row me-3 mt-3">
+    <h5 class="text-body-secondary pb-2 border-bottom">Total de Registros Encontados </h5>
+    <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de Matrículas:</small>
+        <span class="pt-2 text-warning span-destak"><%=@total_de_matriculas%></span>
+    </div>
+
+    <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de Disciplinas:</small>
+         <span class="pt-2 text-warning span-destak"><%=@total_de_disciplinas%></span>
+    </div>
+
+   <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de Cursos:</small>
+        <span class="pt-2 text-warning span-destak"><%=@total_de_cursos%></span>
+    </div>
+
+   <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de Notas:</small>
+        <span class="pt-2 text-warning span-destak"><%=@total_de_notas%></span>
+    </div>
+
+   <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de horas:</small>
+         <span class="pt-2 text-warning span-destak"><%=@total_de_cargas_horarias%></span>
+    </div>
+
+    <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-warning rounded">
+        <small class="border-bottom text-body-tertiary">Total de Semestres:</small>
+         <span class="pt-2 text-warning span-destak"><%=@total_de_matriculas%></span>
+    </div>
+
+</div>
+
+
+
+
+<div class="row me-3 mt-3">
+    <h5 class="text-body-secondary pb-2 border-bottom">Total de Somatórios Encontados </h5>
+
+    <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-primary rounded">
+        <small class="border-bottom text-body-tertiary">Soma de todas as notas:</small>
+        <span class="pt-2 text-primary span-destak"><%=@soma_das_notas%></span>
+    </div>
+
+    <div class="col d-flex flex-column justify-content-center align-items-center shadow-sm me-2 p-4 flex-wrap border-start border-5 border-primary rounded">
+        <small class="border-bottom text-body-tertiary">Soma de todas as cargas horárias:</small>
+         <span class="pt-2 text-primary span-destak"><%=@soma_das_cargas_horarias%></span>
+    </div>
+</div>
+
+
+
+

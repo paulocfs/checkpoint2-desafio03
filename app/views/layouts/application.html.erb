@@ -7,6 +7,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -14,79 +17,30 @@
 
   <body class="container-app">
 
-    <div class="row me-1 g-0  bg-white rounded">
-
-      <div class="col-2 shadow border me-3 rounded">
-
-        <div class="text-center  mb-4">
-          <%= image_tag 'logo_sti.jpeg', size: "70x70", alt: 'Logo STI'  %>
-        </div>
-
-        <nav>
-          <ul class="list-unstyled">
-            <li class="nav-item">
-              <a class="nav-link rounded p-3 border-bottom d-flex align-items-center" href="#">
-                <span class="material-symbols-outlined">house</span>
-                <span class="ps-3">Home</span> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link rounded p-3 border-bottom d-flex align-items-center" href="/alunos">
-                <span class="material-symbols-outlined">assignment_ind</span>
-                <span class="ps-3">Alunos</span> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link rounded p-3 border-bottom d-flex align-items-center" href="/matriculas">
-                <span class="material-symbols-outlined">pin</span>
-                <span class="ps-3">Matrículas</span> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link rounded p-3 border-bottom d-flex align-items-center" href="#">
-                <span class="material-symbols-outlined">book</span>
-                <span class="ps-3">Disciplinas</span> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link rounded p-3 border-bottom d-flex align-items-center" href="#">
-                <span class="material-symbols-outlined">menu_book</span>
-                <span class="ps-3">Cursos</span> 
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <!--sidebar / menu lateral do dashboard-->
+    <%= render "layouts/menu" %>
    
 
-    <div class="col box-overflow shadow ">
+    <section class="col box-overflow shadow ps-3 pe-2">
 
-
-      <header class="header pt-4 pb-4 rounded-start mb-4 ">
-        <div class="row d-flex align-items-center">
-          <div class="col-4 ps-5">
-            <h6> 👋 Bem Vindo de Volta </h6>
-          </div>
-          <div class="col-4 ps-5">
-            <h6> 🏆 chechkpoint 02 - desafio 03</h6>
-          </div>
-          <div class="col-2">
-            <span class="material-symbols-outlined">notifications</span>
-          </div>
-          <div class="col-2">
-            Paulo
-          </div>
-
-        </div>
-      </header>
-
-      <section class="ps-4">
+      <!--header do dashboard-->
+      <%= render "layouts/header" %>
+   
+      <!--main do dashboard-->
+      <main class="ps-4">
         <%= yield %>
-      </section>
+      </main>
+    </section>
 
-    </div>
+ 
 
-    </div>
 
-  </body>
-</html>
+
+
+
+
+
+
+
+ <!--footer do dashboard-->
+ <%= render "layouts/footer" %>

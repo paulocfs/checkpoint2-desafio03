@@ -1,0 +1,56 @@
+<sidebar class="row me-1 g-0  bg-white rounded box-dashboard">
+
+    <sidebar class="col-2 shadow border me-3 rounded">
+
+    <div class="text-center  mt-4 mb-4">
+        <%= image_tag 'logo_sti.jpeg', size: "70x70", alt: 'Logo STI'  %>
+    </div>
+    <div class="text-center mt-5 mb-5 d-flex flex-column align-item-center">
+        <span class=""><%= image_tag 'avatar.jpeg', size: "90x90", alt: 'Logo STI' , class: 'rounded shadow-sm' %></span>
+        <span class="text-secondary mt-2 border-bottom ms-4 me-4">Jhon@gmail.com</span>
+    </div>
+
+    <nav>
+        <ul class="list-unstyled">
+            <li class="nav-item ps-2 pe-2">
+                <a class="nav-link rounded p-3 border-bottom d-flex align-items-center 
+                <%= 'active' if @page_active == "home" %>" 
+                href="/">
+                <span class="material-symbols-outlined">house</span>
+                <span class="ps-3">Home</span> 
+                </a>
+            </li>
+            <li class="nav-item ps-2 pe-2">
+                <a class="nav-link rounded p-3 border-bottom d-flex align-items-center
+                <%= 'active' if @page_active == "alunos" %>" href="/alunos">
+                <span class="material-symbols-outlined">assignment_ind</span>
+                <span class="ps-3">Alunos</span> 
+                </a>
+            </li>
+            <li class="nav-item ps-2 pe-2">
+                <a class="nav-link rounded p-3 border-bottom d-flex align-items-center
+                <%= 'active' if @page_active == "matriculas" %>" 
+                href="/matriculas">
+                <span class="material-symbols-outlined">pin</span>
+                <span class="ps-3">Matrículas</span> 
+                </a>
+            </li>
+            <li class="nav-item ps-2 pe-2">
+                <a class="nav-link rounded p-3 border-bottom d-flex align-items-center
+                <%= 'active' if @page_active == "disciplinas" %>" 
+                href="/disciplinas">
+                <span class="material-symbols-outlined">book</span>
+                <span class="ps-3">Disciplinas</span> 
+                </a>
+            </li>
+            <li class="nav-item ps-2 pe-2">
+                <a class="nav-link rounded p-3 border-bottom d-flex align-items-center
+                <%= 'active' if @page_active == "cursos" %>"
+                href="/cursos">
+                <span class="material-symbols-outlined">menu_book</span>
+                <span class="ps-3">Cursos</span> 
+                </a>
+            </li>
+        </ul>
+    </nav>
+</sidebar>

@@ -1,0 +1,27 @@
+
+<div class="row shadow-sm row">
+  
+  <div class="col-sm p-0">
+    <div class="border-start border-4 border-warning p-3 rounded">
+      <small>Total de Cursos:</small>
+      <span class="text-warning"><strong><%= @total_de_cursos%></strong> </span>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4 mb-4">
+    <div class="">
+    <ul class="list-group list-group-horizontal-sm d-flex flex-wrap">
+      
+      
+      <% @cursos.each do |key, curso|%>
+        <li class="list-group-item list-group-item-light">
+            Curso: 
+            <a href="cursos/<%=key%>" class=" btn btn-primary ms-5 "><%=key%></a>
+        </li>
+     <% end %>
+       
+    </ul>
+    </div>
+</div>
+

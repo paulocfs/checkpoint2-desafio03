@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+   root "home#index"
 
 
   get "/alunos" => "alunos#index", as: :alunos
@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   get "/matriculas" => "matriculas#index", as: :matriculas
 
 
+  get "/disciplinas" => "disciplinas#index", as: :disciplinas
+
+
   get "/cursos" => "cursos#index", as: :cursos
   get "/cursos/:codigo" => "cursos#show", as: :curso
-  get "/cursos/:codigo/aluno/:matricula" => "cursos#show_media", as: :media_curso
+  get "/cursos/:codigo/aluno/:matricula" => "cursos#show_curso_aluno", as: :curso_aluno
 
 end
